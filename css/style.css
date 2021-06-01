@@ -1,20 +1,20 @@
 @import url("reset.css");
 
 :root {
-	--main-accent-color: #3366ff;
-	--main-accent-color-hover: #598bff;
-	--main-bg-color: #151a30;
-	--main-bg-color-disabled: #1b233b;
-	--main-bg-color-input: #1a2138;
-	--main-bg-color-panel: #222b45;
-	--main-bg-color-selected: #2e3a59;
-	--main-border-color: #101426;
+	--main-accent-color: #1a4f4c;
+	--main-accent-color-hover: #326e6a;
+	--main-bg-color: #000000;
+	--main-bg-color-disabled: #214240;
+	--main-bg-color-input: #171919;
+	--main-bg-color-panel: #222525;
+	--main-bg-color-selected: #313438;
+	--main-border-color: #102126;
 	--main-fg-color: #fff;
-	--main-fg-color-dimmed: #6a748d;
-	--main-fg-color-error: #ff3d71;
+	--main-fg-color-dimmed: #5d5f5e;
+	--main-fg-color-error: #d63f3f;
 
 	--main-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
-	--main-font: "Noto Sans";
+	--main-font: "DejaVu Sans";
 }
 
 body {
