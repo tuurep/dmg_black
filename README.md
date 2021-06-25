@@ -18,7 +18,7 @@ The colors (as well as font) can be easily changed in `css/style.css`, set them 
 	--main-border-color: #102126;
 	--main-fg-color: #fff;
 	--main-fg-color-dimmed: #5d5f5e;
-	--main-fg-color-error: #cd6a6a;
+	--main-fg-color-error: #f0c674;
 
 	--main-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
 	--main-font: "DejaVu Sans";
