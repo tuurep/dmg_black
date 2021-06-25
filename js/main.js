@@ -44,7 +44,7 @@ class DmgBlueTheme {
         if (lightdm.is_authenticated) {
             lightdm.login(lightdm.authentication_user, selected_session);
         } else {
-            _self.$error_message.text("Oops... the authentication failed. Let's try again.");
+            _self.$error_message.text("Incorrect password");
             _self.$password.val('');
             _self.start_authentication();
         }
