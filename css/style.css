@@ -2,15 +2,16 @@
 
 :root {
 	--main-accent-color: #1a4f4c;
-	--main-accent-color-hover: #326e6a;
+	--main-accent-color-hover: #1e5a57;
 	--main-bg-color: #000000;
 	--main-bg-color-disabled: #214240;
-	--main-bg-color-input: #171919;
+	--main-bg-color-input: #151515;
 	--main-bg-color-panel: #222525;
 	--main-bg-color-selected: #313438;
-	--main-border-color: #102126;
-	--main-fg-color: #fff;
-	--main-fg-color-dimmed: #5d5f5e;
+	--main-border-color: #282828;
+	--main-fg-color: #ffffff;
+	--main-fg-color-dimmed: #646464;
+	--main-fg-color-placeholder: #373737;
 	--main-fg-color-error: #f0c674;
 
 	--main-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
@@ -154,7 +155,7 @@ form input:focus {
 }
 
 form input::placeholder {
-	color: var(--main-fg-color-dimmed);
+	color: var(--main-fg-color-placeholder);
 }
 
 form input::-webkit-calendar-picker-indicator:hover {
