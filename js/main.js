@@ -42,7 +42,7 @@ class DmgBlueTheme {
         _util.cache_set('last_authenticated_user', lightdm.authentication_user);
 
         if (lightdm.is_authenticated) {
-            lightdm.login(lightdm.authentication_user, selected_session);
+            lightdm.start_session(selected_session);
         } else {
             _self.$error_message.text("Incorrect password");
             _self.$password.val('');
@@ -76,7 +76,7 @@ class DmgBlueTheme {
     prepare_users_list() {
         // Loop through the array of LightDMUser objects to create our user list.
         for (var user of lightdm.users) {
-            $(`<li id="${user.name}">${user.name}</li>`).appendTo(this.$users_list);
+            $(`<li id="${user.username}">${user.display_name}</li>`).appendTo(this.$users_list);
         }
 
         var first = this.$users_list.children().first();
@@ -136,6 +136,8 @@ class DmgBlueTheme {
         window.authentication_complete = this.authentication_complete;
         window.cancel_authentication = this.cancel_authentication;
         window.start_authentication = this.start_authentication;
+
+        lightdm.authentication_complete.connect(this.authentication_complete);
     }
 
     /**
