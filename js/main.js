@@ -4,7 +4,7 @@
 var _self = null;
 var _util = null;
 
-class DmgBlueTheme {
+class DmgBlackTheme {
 
     constructor() {
         if (_self !== null) {
@@ -197,7 +197,7 @@ class DmgBlueTheme {
 
 }
 
-class DmgBlueThemeUtils {
+class DmgBlackThemeUtils {
 
     constructor() {
         if (_util !== null) {
@@ -242,6 +242,6 @@ class DmgBlueThemeUtils {
  * Initialize the theme once the window has loaded.
  */
 $(window).on('load', () => {
-    new DmgBlueThemeUtils();
-    new DmgBlueTheme();
+    new DmgBlackThemeUtils();
+    new DmgBlackTheme();
 } );
