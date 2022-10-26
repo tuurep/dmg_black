@@ -76,7 +76,7 @@ class DmgBlueTheme {
     prepare_users_list() {
         // Loop through the array of LightDMUser objects to create our user list.
         for (var user of lightdm.users) {
-            $(`<li id="${user.name}">${user.name}</li>`).appendTo(this.$users_list);
+            $(`<li id="${user.username}">${user.username}</li>`).appendTo(this.$users_list);
         }
 
         var first = this.$users_list.children().first();
