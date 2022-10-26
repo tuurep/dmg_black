@@ -1,12 +1,20 @@
 # dmg_black
 
-**Currently broken:** Arch package `lightdm-webkit2-greeter` ([link](https://github.com/Antergos/web-greeter)) is an abandoned project, and after updating its dependency `webkit2gtk` to version `2.38` logging in with the greeter stopped working. Looking into how to port this theme to JezerM's `web-greeter` ([link](https://github.com/jezerm/web-greeter)), which is an updated and maintained fork.
-
----
-
-Forked from davidmogar/[lightdm-webkit2-dmg_blue](https://github.com/davidmogar/lightdm-webkit2-dmg_blue) to modify the colors from blue to black with a dark teal accent.
+Forked from davidmogar's [lightdm-webkit2-dmg_blue](https://github.com/davidmogar/lightdm-webkit2-dmg_blue) to:
+* modify the colors from blue to black with a dark teal accent 
+* fix and maintain after `lightdm-webkit2-greeter` stopped working
 
 ![screenshot](screenshot.png)
+
+## `lightdm-webkit2-greeter` deprecation
+
+Arch package `lightdm-webkit2-greeter` ([link](https://github.com/Antergos/web-greeter)) is a project originating in the discontinued Antergos distro, and it is abandoned. After updating dependency `webkit2gtk` to version `2.38` logging in with the greeter stopped working.
+
+Here's a very useful issue about this:
+
+[lightdm-webkit-theme-litarvan issue #186 - "It simply doesn't log in"](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/issues/186)
+
+JezerM's `web-greeter` ([link](https://github.com/jezerm/web-greeter)) is an updated and maintained fork. Available in the AUR: https://aur.archlinux.org/packages/web-greeter 
 
 ## Changing colors
 
