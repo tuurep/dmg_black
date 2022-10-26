@@ -54,12 +54,15 @@ class DmgBlueTheme {
      * Cancel the pending authentication.
      *
      * @param {object} event - jQuery.Event object from 'click' event.
-     */
+    */
+
+    /*
     cancel_authentication(event) {
         lightdm.cancel_authentication();
 
         _self.auth_pending = false;
     }
+    */
 
     /**
      * Initialize the theme.
@@ -133,9 +136,7 @@ class DmgBlueTheme {
             _self.$shutdown.click(function() { lightdm.shutdown(); });
         }
 
-        window.authentication_complete = this.authentication_complete;
-        window.cancel_authentication = this.cancel_authentication;
-        window.start_authentication = this.start_authentication;
+        lightdm.authentication_complete.connect(this.authentication_complete);
     }
 
     /**
