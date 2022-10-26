@@ -42,7 +42,7 @@ class DmgBlueTheme {
         _util.cache_set('last_authenticated_user', lightdm.authentication_user);
 
         if (lightdm.is_authenticated) {
-            lightdm.login(lightdm.authentication_user, selected_session);
+            lightdm.start_session(selected_session);
         } else {
             _self.$error_message.text("Incorrect password");
             _self.$password.val('');
