@@ -1,45 +1,45 @@
 @import url("reset.css");
 
 :root {
-	--main-accent-color: #1a4f4c;
-	--main-accent-color-hover: #1e5a57;
-	--main-bg-color: #000000;
-	--main-bg-color-disabled: #214240;
-	--main-bg-color-input: #121212;
-	--main-bg-color-panel: #222525;
-	--main-bg-color-selected: #313438;
-	--main-border-color: #282828;
-	--main-fg-color: #ffffff;
-	--main-fg-color-dimmed: #646464;
-	--main-fg-color-placeholder: #373737;
-	--main-fg-color-error: #f0c674;
+    --main-accent-color: #1a4f4c;
+    --main-accent-color-hover: #1e5a57;
+    --main-bg-color: #000000;
+    --main-bg-color-disabled: #214240;
+    --main-bg-color-input: #121212;
+    --main-bg-color-panel: #222525;
+    --main-bg-color-selected: #313438;
+    --main-border-color: #282828;
+    --main-fg-color: #ffffff;
+    --main-fg-color-dimmed: #646464;
+    --main-fg-color-placeholder: #373737;
+    --main-fg-color-error: #f0c674;
 
-	--main-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
-	--main-font: "DejaVu Sans";
+    --main-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
+    --main-font: "DejaVu Sans";
 }
 
 body {
-	 background-color: var(--main-bg-color);
-	 bottom: 0;
-	 color: var(--main-fg-color);
-	 font-family: var(--main-font);
-	 font-size: 15px;
-	 left: 0;
-	 position: absolute;
-	 right: 0;
-	 top: 0;
+    background-color: var(--main-bg-color);
+    bottom: 0;
+    color: var(--main-fg-color);
+    font-family: var(--main-font);
+    font-size: 15px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .select {
-	box-sizing : border-box;
-	cursor: pointer;
-	display: inline-block;
-	position: relative;
-	outline: none;
+    box-sizing : border-box;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    outline: none;
 }
 
 .select:hover .select-value:after {
-	border-top: 5px solid var(--main-fg-color);
+    border-top: 5px solid var(--main-fg-color);
 }
 
 ::selection {
@@ -52,79 +52,79 @@ form input::selection {
 }
 
 .select-input {
-	display: none;
+    display: none;
 }
 
 .select-input + .select-menu {
-	display: none;
+    display: none;
 }
 
 .select-input:checked + .select-menu {
-	display: block;
+    display: block;
 }
 
 .select-menu {
-	background-color: var(--main-bg-color-input);
-	border: 1px solid var(--main-border-color);
-	left: -1px; /* Parent border */
-	list-style-type: none;
-	margin-top: 0.5em;
-	position: absolute;
-	right: -1px; /* Parent border */
+    background-color: var(--main-bg-color-input);
+    border: 1px solid var(--main-border-color);
+    left: -1px; /* Parent border */
+    list-style-type: none;
+    margin-top: 0.5em;
+    position: absolute;
+    right: -1px; /* Parent border */
 }
 
 .select-menu li {
-	color: var(--main-fg-color-dimmed);
-	cursor: pointer;
-	margin: -1px 0;
-	padding: 1em;
-	white-space: nowrap;
+    color: var(--main-fg-color-dimmed);
+    cursor: pointer;
+    margin: -1px 0;
+    padding: 1em;
+    white-space: nowrap;
 }
 
 .select-menu li:hover {
-	background-color: var(--main-accent-color) !important;
-	color: var(--main-fg-color);
+    background-color: var(--main-accent-color) !important;
+    color: var(--main-fg-color);
 }
 
 .select-menu li.selected {
-	background-color: var(--main-bg-color-selected);
-	color: var(--main-fg-color);
+    background-color: var(--main-bg-color-selected);
+    color: var(--main-fg-color);
 }
 
 .select-value {
-	background-color: transparent;
-	cursor: pointer;
-	display: inline-block;
-	padding: 1em 2em 1em;
-	white-space: nowrap;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    padding: 1em 2em 1em;
+    white-space: nowrap;
 }
 
 .select-value:after {
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-top: 5px solid var(--main-fg-color-dimmed);
-	content: '';
-	height: 0;
-	position: absolute;
-	right: 15px;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--main-fg-color-dimmed);
+    content: '';
+    height: 0;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
 }
 
 form {
-	width: 100%;
+    width: 100%;
 }
 
 form button {
-	background-color: var(--main-accent-color);
+    background-color: var(--main-accent-color);
     border: none;
-	color: var(--main-fg-color);
-	font-family: var(--main-font);
-	font-size: 1em;
-	font-weight: bold;
-	padding: 1em;
-	width: 100%;
+    color: var(--main-fg-color);
+    font-family: var(--main-font);
+    font-size: 1em;
+    font-weight: bold;
+    padding: 1em;
+    width: 100%;
 }
 
 form button:disabled,
@@ -136,56 +136,56 @@ form button:disabled:hover {
 
 form button:focus,
 form button:hover {
-	background-color: var(--main-accent-color-hover);
-	cursor: pointer;
+    background-color: var(--main-accent-color-hover);
+    cursor: pointer;
 }
 
 form input {
-	background-color: var(--main-bg-color-input);
-	border: 1px solid var(--main-border-color);
-	box-sizing : border-box;
-	color: var(--main-fg-color);
-	font-family: var(--main-font);
-	font-size: 1em;
-	margin-bottom: 1em;
-	padding: 1em;
-	text-align: center;
-	width: 100%;
+    background-color: var(--main-bg-color-input);
+    border: 1px solid var(--main-border-color);
+    box-sizing : border-box;
+    color: var(--main-fg-color);
+    font-family: var(--main-font);
+    font-size: 1em;
+    margin-bottom: 1em;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
 }
 
 form button:focus,
 form input:focus {
-	outline: none;
+    outline: none;
 }
 
 form input::placeholder {
-	color: var(--main-fg-color-placeholder);
+    color: var(--main-fg-color-placeholder);
 }
 
 form input::-webkit-calendar-picker-indicator:hover {
-	background-color: transparent;
-	color: var(--main-fg-color);
-	cursor: pointer;
+    background-color: transparent;
+    color: var(--main-fg-color);
+    cursor: pointer;
 }
 
 form .select {
-	background-color: var(--main-bg-color-input);
-	border: 1px solid var(--main-border-color);
-	margin-bottom: 1em;
-	width: 100%;
+    background-color: var(--main-bg-color-input);
+    border: 1px solid var(--main-border-color);
+    margin-bottom: 1em;
+    width: 100%;
 }
 
 #bar {
-	background-color: var(--main-bg-color-input);
-	box-shadow: var(--main-box-sadow);
-	cursor: default;
-	display: flex;
-	height: 2.4em;
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 100%;
+    background-color: var(--main-bg-color-input);
+    box-shadow: var(--main-box-sadow);
+    cursor: default;
+    display: flex;
+    height: 2.4em;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
 }
 
 #error-message:not(:empty) {
@@ -196,50 +196,50 @@ form .select {
 
 
 #power {
-	background-color: var(--main-accent-color);
-	margin-left: auto;
-	text-align: center;
+    background-color: var(--main-accent-color);
+    margin-left: auto;
+    text-align: center;
 }
 
 #power svg {
-	cursor: pointer;
+    cursor: pointer;
     display: none;
-	fill: var(--main-fg-color);
-	padding: 0.33em 0.8em;
-	width: 1.5em !important;
+    fill: var(--main-fg-color);
+    padding: 0.33em 0.8em;
+    width: 1.5em !important;
 }
 
 #session svg {
-	fill: var(--main-fg-color);
-	padding: 0.33em 0.8em;
-	width: 1.4em !important;
+    fill: var(--main-fg-color);
+    padding: 0.33em 0.8em;
+    width: 1.4em !important;
 }
 
 #session .select {
-	top: -0.7em;
+    top: -0.7em;
 }
 
 #session .select-value {
-	padding: 0 2.5em 0 0;
+    padding: 0 2.5em 0 0;
 }
 
 #session .select-menu {
-	border: none;
-	box-shadow: var(--main-box-sadow);
-	margin-top: 1.2em;
-	right: auto;
+    border: none;
+    box-shadow: var(--main-box-sadow);
+    margin-top: 1.2em;
+    right: auto;
 }
 
 #wrapper {
-	background-color: var(--main-bg-color-panel);
-	box-shadow: var(--main-box-sadow);
-	left: 50%;
-	margin: 0 auto;
-	overflow: hidden;
-	padding: 2em;
-	position: absolute;
-	top: 50%;
-	text-align: center;
-	transform: translate(-50%, -50%);
-	width: 30em;
+    background-color: var(--main-bg-color-panel);
+    box-shadow: var(--main-box-sadow);
+    left: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 2em;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 30em;
 }
