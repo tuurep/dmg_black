@@ -162,12 +162,6 @@ form input::placeholder {
     color: var(--main-fg-color-placeholder);
 }
 
-form input::-webkit-calendar-picker-indicator:hover {
-    background-color: transparent;
-    color: var(--main-fg-color);
-    cursor: pointer;
-}
-
 form .select {
     background-color: var(--main-bg-color-input);
     border: 1px solid var(--main-border-color);
