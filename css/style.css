@@ -43,8 +43,12 @@ body {
 }
 
 ::selection {
-    color: none;
     background: none;
+}
+
+form input::selection {
+    color: var(--main-bg-color-input);
+    background-color: var(--main-fg-color);
 }
 
 .select-input {
