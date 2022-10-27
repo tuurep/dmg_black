@@ -26,7 +26,7 @@ The colors (as well as font) can be easily changed in `css/style.css`, set them 
     --main-accent-color-hover: #1e5a57;
     --main-bg-color: #000000;
     --main-bg-color-disabled: #214240;
-    --main-bg-color-input: #151515;
+    --main-bg-color-input: #121212;
     --main-bg-color-panel: #222525;
     --main-bg-color-selected: #313438;
     --main-border-color: #282828;
