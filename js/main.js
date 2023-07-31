@@ -1,6 +1,4 @@
-/**
- * This is used to access our classes from within jQuery callbacks.
- */
+/* This is used to access our classes from within jQuery callbacks. */
 var _self = null;
 var _util = null;
 
@@ -29,11 +27,10 @@ class DmgBlackTheme {
         return _self;
     }
 
-    /**
-     * Called when the user attempts to authenticate (submits password).
-     * We check to see if the user successfully authenticated and if so tell the LDM
-     * Greeter to log them in with the session they selected.
-     */
+    /* Called when the user attempts to authenticate (submits password).
+       We check to see if the user successfully authenticated and if so tell the LDM
+       Greeter to log them in with the session they selected.
+    */
     authentication_complete() {
         var selected_session = _self.$session.attr('id');
 
@@ -50,10 +47,8 @@ class DmgBlackTheme {
         }
     }
 
-    /**
-     * Cancel the pending authentication.
-     *
-     * @param {object} event - jQuery.Event object from 'click' event.
+    /* Cancel the pending authentication.
+       @param {object} event - jQuery.Event object from 'click' event.
     */
 
     /*
@@ -64,18 +59,14 @@ class DmgBlackTheme {
     }
     */
 
-    /**
-     * Initialize the theme.
-     */
+    /* Initialize the theme. */
     initialize() {
         this.prepare_session_list();
         this.prepare_users_list();
         this.register_callbacks();
     }
 
-    /**
-     * Initialize the user list.
-     */
+    /* Initialize the user list. */
     prepare_users_list() {
         // Loop through the array of LightDMUser objects to create our user list.
         for (var user of lightdm.users) {
@@ -91,9 +82,7 @@ class DmgBlackTheme {
         this.update_users_select(first, user=last_authenticated_user);
     }
 
-    /**
-     * Initialize the session selection dropdown.
-     */
+    // Initialize the session selection dropdown.
     prepare_session_list() {
         // Loop through the array of LightDMSession objects to create our session list.
         for (var session of lightdm.sessions) {
@@ -106,10 +95,9 @@ class DmgBlackTheme {
         this.$session.attr('id', first.attr('id'));
     }
 
-    /**
-     * Register callbacks for the LDM Greeter as well as any others that haven't
-     * been registered elsewhere.
-     */
+    /* Register callbacks for the LDM Greeter as well as any others that haven't
+       been registered elsewhere.
+    */
     register_callbacks() {
         $('form').submit(function(event) {
             event.preventDefault();
@@ -139,11 +127,9 @@ class DmgBlackTheme {
         lightdm.authentication_complete.connect(this.authentication_complete);
     }
 
-    /**
-     * Start the authentication process for the selected user.
-     *
-     * @param {object} event - jQuery.Event object from 'click' event.
-     */
+    /* Start the authentication process for the selected user.
+       @param {object} event - jQuery.Event object from 'click' event.
+    */
     start_authentication(event) {
         var username = _self.$user.attr('id');
 
@@ -208,39 +194,31 @@ class DmgBlackThemeUtils {
         return _util;
     }
 
-    /**
-     * Get a key's value from localStorage.
-     *
-     * @param {string} key - The key to retrieve.
-     */
+    /* Get a key's value from localStorage.
+       @param {string} key - The key to retrieve.
+    */
     cache_get(key) {
         if (typeof(Storage) !== 'undefined') {
-           return localStorage.getItem(key)
+            return localStorage.getItem(key)
         } else {
-          // Sorry! No Web Storage support..
+            // Sorry! No Web Storage support..
         }
     }
 
-    /**
-     * Set a key's value in localStorage.
-     *
-     * @param {string} value - The value to set.
-     */
+    /* Set a key's value in localStorage.
+       @param {string} value - The value to set.
+    */
     cache_set(key, value) {
         if (typeof(Storage) !== 'undefined') {
-           localStorage.setItem(key, value)
+            localStorage.setItem(key, value)
         } else {
-          // Sorry! No Web Storage support..
+            // Sorry! No Web Storage support..
         }
     }
 
 }
 
-
-
-/**
- * Initialize the theme once the window has loaded.
- */
+/* Initialize the theme once the window has loaded. */
 $(window).on('load', () => {
     new DmgBlackThemeUtils();
     new DmgBlackTheme();
