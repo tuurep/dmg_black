@@ -1,225 +1,172 @@
-/* This is used to access our classes from within jQuery callbacks. */
-var _self = null;
-var _util = null;
+function save_cache() {
+    // TODO: localStorage isn't working properly in web-greeter
+    // See: 
+    // https://www.reddit.com/r/linuxquestions/comments/12uhsyr/comment/jh8yi8o/?utm_source=share&utm_medium=web2x&context=3
 
-class DmgBlackTheme {
+    const user = window.users.selected.id;
+    const session = window.sessions.selected.id;
+    
+    // Cache user to select it at start next time
+    localStorage.setItem("LAST_USER", user);
 
-    constructor() {
-        if (_self !== null) {
-            return _self;
-        }
-        _self = this;
-
-        this.auth_pending = false;
-
-        this.$error_message = $('#error-message');
-        this.$login_button = $('form button');
-        this.$password = $('#password');
-        this.$restart = $('#restart')
-        this.$session = $('#session .select-value');
-        this.$sessions_list = $('#session .select-menu');
-        this.$shutdown = $('#shutdown');
-        this.$user = $('#users .select-value');
-        this.$users_list = $('#users .select-menu');
-
-        this.initialize();
-
-        return _self;
-    }
-
-    /* Called when the user attempts to authenticate (submits password).
-       We check to see if the user successfully authenticated and if so tell the LDM
-       Greeter to log them in with the session they selected.
-    */
-    authentication_complete() {
-        var selected_session = _self.$session.attr('id');
-
-        _self.auth_pending = false;
-        _util.cache_set(lightdm.authentication_user, selected_session);
-        _util.cache_set('last_authenticated_user', lightdm.authentication_user);
-
-        if (lightdm.is_authenticated) {
-            lightdm.start_session(selected_session);
-        } else {
-            _self.$error_message.text("Incorrect password");
-            _self.$password.val('');
-            _self.start_authentication();
-        }
-    }
-
-    /* Cancel the pending authentication.
-       @param {object} event - jQuery.Event object from 'click' event.
-    */
-
-    /*
-    cancel_authentication(event) {
-        lightdm.cancel_authentication();
-
-        _self.auth_pending = false;
-    }
-    */
-
-    /* Initialize the theme. */
-    initialize() {
-        this.prepare_session_list();
-        this.prepare_users_list();
-        this.register_callbacks();
-    }
-
-    /* Initialize the user list. */
-    prepare_users_list() {
-        // Loop through the array of LightDMUser objects to create our user list.
-        for (var user of lightdm.users) {
-            $(`<li id="${user.username}">${user.username}</li>`).appendTo(this.$users_list);
-        }
-
-        var first = this.$users_list.children().first();
-        first.addClass('selected');
-        this.$user.text(first.text());
-        this.$user.attr('id', first.attr('id'));
-
-        var last_authenticated_user = _util.cache_get('last_authenticated_user');
-        this.update_users_select(first, user=last_authenticated_user);
-    }
-
-    // Initialize the session selection dropdown.
-    prepare_session_list() {
-        // Loop through the array of LightDMSession objects to create our session list.
-        for (var session of lightdm.sessions) {
-            $(`<li id="${session.key}">${session.name}</li>`).appendTo(this.$sessions_list);
-        }
-
-        var first = this.$sessions_list.children().first();
-        first.addClass('selected');
-        this.$session.text(first.text());
-        this.$session.attr('id', first.attr('id'));
-    }
-
-    /* Register callbacks for the LDM Greeter as well as any others that haven't
-       been registered elsewhere.
-    */
-    register_callbacks() {
-        $('form').submit(function(event) {
-            event.preventDefault();
-            if (_self.auth_pending) {
-                _self.$login_button.prop('disabled', true);
-                _self.submit_password(event);
-            }
-        });
-
-        $(".select").focusout(function() {
-            $('.select-input').prop("checked", false);
-        });
-
-        $('#sessions li').click(this.update_sessions_select);
-        $('#users li').click(this.update_users_select);
-
-        if (lightdm.can_restart) {
-            _self.$restart.show()
-            _self.$restart.click(function() { lightdm.restart(); });
-        }
-
-        if (lightdm.can_shutdown) {
-            _self.$shutdown.show()
-            _self.$shutdown.click(function() { lightdm.shutdown(); });
-        }
-
-        lightdm.authentication_complete.connect(this.authentication_complete);
-    }
-
-    /* Start the authentication process for the selected user.
-       @param {object} event - jQuery.Event object from 'click' event.
-    */
-    start_authentication(event) {
-        var username = _self.$user.attr('id');
-
-        _self.$login_button.prop('disabled', false);
-
-        if (_self.auth_pending) {
-            lightdm.cancel_authentication();
-        }
-
-        _self.auth_pending = true;
-        lightdm.authenticate(username);
-    }
-
-    submit_password(event) {
-        lightdm.respond(_self.$password.val());
-    }
-
-    update_sessions_select(event) {
-        var target = 'target' in event ? $(event.target) : event;
-        var session = target.text();
-
-        _self.$sessions_list.children().removeClass('selected');
-        target.addClass('selected');
-
-        _self.$session.text(session);
-        _self.$session.attr('id', target.attr('id'));
-    }
-
-    update_users_select(event, user=null) {
-        var target = 'target' in event ? $(event.target) : event;
-        var user = user ? user : target.text();
-        var session = _util.cache_get(user);
-
-        if (!session) {
-            session = _self.$sessions_list.children().first().attr('id');
-        }
-
-        var session_li = _self.$sessions_list.children('#' + session);
-        if (session_li.length) {
-            _self.update_sessions_select(session_li);
-        }
-
-        _self.$users_list.children().removeClass('selected');
-        target.addClass('selected');
-
-        _self.$user.text(user);
-        _self.$user.attr('id', target.attr('id'));
-
-        _self.start_authentication();
-    }
-
+    // Cache session - each user remembers the session they last logged into
+    localStorage.setItem(user, session);
 }
 
-class DmgBlackThemeUtils {
-
-    constructor() {
-        if (_util !== null) {
-            return _util;
-        }
-        _util = this;
-
-        return _util;
-    }
-
-    /* Get a key's value from localStorage.
-       @param {string} key - The key to retrieve.
-    */
-    cache_get(key) {
-        if (typeof(Storage) !== 'undefined') {
-            return localStorage.getItem(key)
-        } else {
-            // Sorry! No Web Storage support..
-        }
-    }
-
-    /* Set a key's value in localStorage.
-       @param {string} value - The value to set.
-    */
-    cache_set(key, value) {
-        if (typeof(Storage) !== 'undefined') {
-            localStorage.setItem(key, value)
-        } else {
-            // Sorry! No Web Storage support..
-        }
-    }
-
+function start_authentication() {
+    lightdm.cancel_authentication();
+    window.loginbutton.disabled = false;
+    lightdm.authenticate(window.users.selected.id);
 }
 
-/* Initialize the theme once the window has loaded. */
-$(window).on('load', () => {
-    new DmgBlackThemeUtils();
-    new DmgBlackTheme();
-} );
+function attempt_login() {
+    if (lightdm.is_authenticated) {
+        save_cache();
+        lightdm.start_session(window.sessions.selected.id);
+    } else {
+        const errormessage  = document.querySelector("#error-message");
+        errormessage.textContent = "Incorrect password";
+        password.value = "";
+        start_authentication();
+    }
+}
+
+function set_loginform() {
+    const form = document.querySelector("form");
+    const password = document.querySelector("#password");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        window.loginbutton.disabled = true;
+        lightdm.respond(password.value);
+    });
+
+    // Signal - Emits after clicking on Login button
+    lightdm.authentication_complete.connect(attempt_login);
+}
+
+function set_powerbuttons() {
+    if (lightdm.can_restart) {
+        const button = document.querySelector("#restart");
+        button.style.display = "inline-block";
+        button.addEventListener("click", () => lightdm.restart());
+    }
+    if (lightdm.can_shutdown) {
+        const button = document.querySelector("#shutdown");
+        button.style.display = "inline-block";
+        button.addEventListener("click", () => lightdm.shutdown());
+    }
+}
+
+class Users {
+
+    constructor() {
+        this.selected = document.querySelector("#users .select-value");
+        this.list = document.querySelector("#users .select-menu");
+
+        this.init_userlist();
+    }
+
+    init_userlist() {
+        for (const user of lightdm.users) {
+            const id = user.username;
+            const text = user.username;
+            const li = document.createElement("li");
+            li.id = id;
+            li.textContent = text;
+            li.addEventListener("click", () => this.select_user(id, text));
+            this.list.appendChild(li);
+        }
+    }
+
+    select_user(id, text) {
+        this.list.querySelector(".selected")?.classList.remove("selected");
+        this.list.querySelector(`#${id}`).classList.add("selected");
+
+        this.selected.id = id;
+        this.selected.textContent = text;
+
+        if (id in localStorage) {
+            const last_session = localStorage.getItem(id);
+            const li = window.sessions.list.querySelector(`#${last_session}`);
+            window.sessions.select_session(li.id, li.textContent);
+        } else {
+            // This user has never logged in
+            // select first session in dropdown list
+            const first = window.sessions.list.children[0];
+            window.sessions.select_session(first.id, first.textContent);
+        }
+
+        start_authentication();
+    }
+}
+
+class Sessions {
+
+    constructor() {
+        this.selected = document.querySelector("#sessions .select-value");
+        this.list = document.querySelector("#sessions .select-menu");
+
+        this.init_sessionlist();
+    }
+
+    init_sessionlist() {
+        for (const session of lightdm.sessions) {
+            const id = session.key;
+            const text = session.name;
+            const li = document.createElement("li");
+            li.id = id;
+            li.textContent = text;
+            li.addEventListener("click", () => this.select_session(id, text));
+            this.list.appendChild(li);
+        }
+    }
+
+    select_session(id, text) {
+        this.list.querySelector(".selected")?.classList.remove("selected");
+        this.list.querySelector(`#${id}`).classList.add("selected");
+
+        this.selected.id = id;
+        this.selected.textContent = text;
+    }
+}
+
+function set_dropdown_lists() {
+    window.users = new Users();
+    window.sessions = new Sessions();
+
+    // Select user who last attempted login
+    if ("LAST_USER" in localStorage) {
+        const last_user = localStorage.getItem("LAST_USER");
+        const li = window.users.list.querySelector(`#${last_user}`);
+        window.users.select_user(li.id, li.textContent);
+    } else {
+        // If first time, select first user in dropdown list
+        const first = window.users.list.children[0];
+        window.users.select_user(first.id, first.textContent);
+    }
+
+    // Close user and session dropdowns on focusout
+    const dropdowns = document.querySelectorAll(".select");
+    for (const d of dropdowns) {
+        d.addEventListener("focusout", () => {
+            d.querySelector(".select-input").checked = false;
+        });
+    }
+}
+
+/*
+async function wait(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+*/
+
+async function init_greeter() {
+    window.loginbutton = document.querySelector("form button");
+
+    set_dropdown_lists();
+    set_powerbuttons();
+    set_loginform();
+}
+
+window.addEventListener("GreeterReady", init_greeter);
