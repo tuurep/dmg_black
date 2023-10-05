@@ -1,28 +1,30 @@
 @import url("reset.css");
 
 :root {
-    --main-accent-color: #1a4f4c;
-    --main-accent-color-hover: #1e5a57;
-    --main-bg-color: #000000;
-    --main-bg-color-disabled: #214240;
-    --main-bg-color-input: #121212;
-    --main-bg-color-panel: #222525;
-    --main-bg-color-selected: #313438;
-    --main-border-color: #282828;
-    --main-fg-color: #ffffff;
-    --main-fg-color-dimmed: #646464;
-    --main-fg-color-placeholder: #373737;
-    --main-fg-color-error: #f0c674;
+    --accent-color:           #1a4f4c;
+    --accent-color-hover:     #1e5a57;
+    --accent-color-disabled:  #214240;
 
-    --main-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
-    --main-font: "DejaVu Sans";
+    --bg-color:               #000000;
+    --bg-color-panel:         #222525;
+    --bg-color-input:         #121212;
+    --bg-color-selected:      #313438;
+    --border-color:           #282828;
+
+    --fg-color:               #ffffff;
+    --fg-color-dimmed:        #646464;
+    --fg-color-placeholder:   #373737;
+    --fg-color-error:         #f0c674;
+
+    --box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
+    --font: "DejaVu Sans";
 }
 
 body {
-    background-color: var(--main-bg-color);
+    background-color: var(--bg-color);
     bottom: 0;
-    color: var(--main-fg-color);
-    font-family: var(--main-font);
+    color: var(--fg-color);
+    font-family: var(--font);
     font-size: 15px;
     left: 0;
     position: absolute;
@@ -39,7 +41,7 @@ body {
 }
 
 .select:hover .select-value:after {
-    border-top: 5px solid var(--main-fg-color);
+    border-top: 5px solid var(--fg-color);
 }
 
 ::selection {
@@ -47,8 +49,8 @@ body {
 }
 
 form input::selection {
-    color: var(--main-bg-color-input);
-    background-color: var(--main-fg-color);
+    color: var(--bg-color-input);
+    background-color: var(--fg-color);
 }
 
 .select-input {
@@ -64,8 +66,8 @@ form input::selection {
 }
 
 .select-menu {
-    background-color: var(--main-bg-color-input);
-    border: 1px solid var(--main-border-color);
+    background-color: var(--bg-color-input);
+    border: 1px solid var(--border-color);
     left: -1px; /* Parent border */
     list-style-type: none;
     margin-top: 0.5em;
@@ -74,7 +76,7 @@ form input::selection {
 }
 
 .select-menu li {
-    color: var(--main-fg-color-dimmed);
+    color: var(--fg-color-dimmed);
     cursor: pointer;
     margin: -1px 0;
     padding: 1em;
@@ -82,13 +84,13 @@ form input::selection {
 }
 
 .select-menu li:hover {
-    background-color: var(--main-accent-color-hover) !important;
-    color: var(--main-fg-color);
+    background-color: var(--accent-color-hover) !important;
+    color: var(--fg-color);
 }
 
 .select-menu li.selected {
-    background-color: var(--main-bg-color-selected);
-    color: var(--main-fg-color);
+    background-color: var(--bg-color-selected);
+    color: var(--fg-color);
 }
 
 .select-value {
@@ -102,7 +104,7 @@ form input::selection {
 .select-value:after {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid var(--main-fg-color-dimmed);
+    border-top: 5px solid var(--fg-color-dimmed);
     content: '';
     height: 0;
     position: absolute;
@@ -117,10 +119,10 @@ form {
 }
 
 form button {
-    background-color: var(--main-accent-color);
+    background-color: var(--accent-color);
     border: none;
-    color: var(--main-fg-color);
-    font-family: var(--main-font);
+    color: var(--fg-color);
+    font-family: var(--font);
     font-size: 1em;
     font-weight: bold;
     padding: 1em;
@@ -129,23 +131,23 @@ form button {
 
 form button:disabled,
 form button:disabled:hover {
-    background-color: var(--main-bg-color-disabled);
-    color: var(--main-fg-color-dimmed);
+    background-color: var(--bg-color-disabled);
+    color: var(--fg-color-dimmed);
     cursor: default;
 }
 
 form button:focus,
 form button:hover {
-    background-color: var(--main-accent-color-hover);
+    background-color: var(--accent-color-hover);
     cursor: pointer;
 }
 
 form input {
-    background-color: var(--main-bg-color-input);
-    border: 1px solid var(--main-border-color);
+    background-color: var(--bg-color-input);
+    border: 1px solid var(--border-color);
     box-sizing : border-box;
-    color: var(--main-fg-color);
-    font-family: var(--main-font);
+    color: var(--fg-color);
+    font-family: var(--font);
     font-size: 1em;
     margin-bottom: 1em;
     padding: 1em;
@@ -159,19 +161,19 @@ form input:focus {
 }
 
 form input::placeholder {
-    color: var(--main-fg-color-placeholder);
+    color: var(--fg-color-placeholder);
 }
 
 form .select {
-    background-color: var(--main-bg-color-input);
-    border: 1px solid var(--main-border-color);
+    background-color: var(--bg-color-input);
+    border: 1px solid var(--border-color);
     margin-bottom: 1em;
     width: 100%;
 }
 
 #bar {
-    background-color: var(--main-bg-color-input);
-    box-shadow: var(--main-box-sadow);
+    background-color: var(--bg-color-input);
+    box-shadow: var(--box-sadow);
     cursor: default;
     display: flex;
     height: 2.4em;
@@ -183,14 +185,14 @@ form .select {
 }
 
 #error-message:not(:empty) {
-    color: var(--main-fg-color-error);
+    color: var(--fg-color-error);
     display: block;
     margin-bottom: 2em;
 }
 
 
 #power {
-    background-color: var(--main-accent-color);
+    background-color: var(--accent-color);
     margin-left: auto;
     text-align: center;
 }
@@ -198,17 +200,17 @@ form .select {
 #power svg {
     cursor: pointer;
     display: none;
-    fill: var(--main-fg-color);
+    fill: var(--fg-color);
     padding: 0.33em 0.8em;
     width: 1.5em !important;
 }
 
 #power svg:hover {
-    background-color: var(--main-accent-color-hover);
+    background-color: var(--accent-color-hover);
 }
 
 #session svg {
-    fill: var(--main-fg-color);
+    fill: var(--fg-color);
     padding: 0.33em 0.8em;
     width: 1.4em !important;
 }
@@ -223,14 +225,14 @@ form .select {
 
 #session .select-menu {
     border: none;
-    box-shadow: var(--main-box-sadow);
+    box-shadow: var(--box-sadow);
     margin-top: 1.2em;
     right: auto;
 }
 
 #wrapper {
-    background-color: var(--main-bg-color-panel);
-    box-shadow: var(--main-box-sadow);
+    background-color: var(--bg-color-panel);
+    box-shadow: var(--box-sadow);
     left: 50%;
     margin: 0 auto;
     overflow: hidden;

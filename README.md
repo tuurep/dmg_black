@@ -22,20 +22,22 @@ The colors (as well as font) can be easily changed in `css/style.css`, set them 
 
 ```css
 :root {
-    --main-accent-color: #1a4f4c;
-    --main-accent-color-hover: #1e5a57;
-    --main-bg-color: #000000;
-    --main-bg-color-disabled: #214240;
-    --main-bg-color-input: #121212;
-    --main-bg-color-panel: #222525;
-    --main-bg-color-selected: #313438;
-    --main-border-color: #282828;
-    --main-fg-color: #ffffff;
-    --main-fg-color-dimmed: #646464;
-    --main-fg-color-placeholder: #373737;
-    --main-fg-color-error: #f0c674;
+    --accent-color:           #1a4f4c;
+    --accent-color-hover:     #1e5a57;
+    --accent-color-disabled:  #214240;
 
-    --main-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
-    --main-font: "DejaVu Sans";
+    --bg-color:               #000000;
+    --bg-color-panel:         #222525;
+    --bg-color-input:         #121212;
+    --bg-color-selected:      #313438;
+    --border-color:           #282828;
+
+    --fg-color:               #ffffff;
+    --fg-color-dimmed:        #646464;
+    --fg-color-placeholder:   #373737;
+    --fg-color-error:         #f0c674;
+
+    --box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
+    --font: "DejaVu Sans";
 }
 ```
