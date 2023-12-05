@@ -131,7 +131,7 @@ form button {
 
 form button:disabled,
 form button:disabled:hover {
-    background-color: var(--bg-color-disabled);
+    background-color: var(--accent-color-disabled);
     color: var(--fg-color-dimmed);
     cursor: default;
 }
