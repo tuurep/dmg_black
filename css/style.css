@@ -73,6 +73,9 @@ form input::selection {
     margin-top: 0.5em;
     position: absolute;
     right: -1px; /* Parent border */
+    overflow-y: auto;
+    padding-bottom: 1px;
+    z-index: 2;
 }
 
 .select-menu li {
@@ -112,6 +115,18 @@ form input::selection {
     top: 50%;
     transform: translateY(-50%);
     width: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #202020;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #505050;
 }
 
 form {
@@ -228,6 +243,11 @@ form .select {
     box-shadow: var(--box-sadow);
     margin-top: 1.2em;
     right: auto;
+    max-height: 94vh;
+}
+
+#users .select-menu {
+    max-height: 49vh;
 }
 
 #wrapper {
@@ -235,7 +255,6 @@ form .select {
     box-shadow: var(--box-sadow);
     left: 50%;
     margin: 0 auto;
-    overflow: hidden;
     padding: 2em;
     position: absolute;
     top: 50%;
