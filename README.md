@@ -35,7 +35,7 @@ The colors (as well as font) can be easily changed in `css/style.css`, set them 
     --fg-color:               #ffffff;
     --fg-color-dimmed:        #646464;
     --fg-color-placeholder:   #373737;
-    --fg-color-error:         #e8c174;
+    --fg-color-error:         #e8c47b;
 
     --box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
     --font: "DejaVu Sans";
