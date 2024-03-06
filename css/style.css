@@ -7,7 +7,8 @@
 
     --bg-color:               #000000;
     --bg-color-panel:         #222525;
-    --bg-color-input:         #121212;
+    --bg-color-input:         #0f0f0f;
+    --bg-color-bar:           #121212;
     --bg-color-selected:      #313438;
     --border-color:           #282828;
 
@@ -66,7 +67,7 @@ form input::selection {
 }
 
 .select-menu {
-    background-color: var(--bg-color-input);
+    background-color: var(--bg-color-bar);
     border: 1px solid var(--border-color);
     left: -1px; /* Parent border */
     list-style-type: none;
@@ -187,7 +188,7 @@ form .select {
 }
 
 #bar {
-    background-color: var(--bg-color-input);
+    background-color: var(--bg-color-bar);
     box-shadow: var(--box-sadow);
     cursor: default;
     display: flex;
