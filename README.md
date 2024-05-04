@@ -28,7 +28,7 @@ The colors (as well as font) can be easily changed in `css/style.css`, set them 
 
     --bg-color:               #000000;
     --bg-color-panel:         #222525;
-    --bg-color-input:         #0f0f0f;
+    --bg-color-input:         #0d0d0d;
     --bg-color-bar:           #121212;
     --bg-color-selected:      #313438;
     --border-color:           #282828;
