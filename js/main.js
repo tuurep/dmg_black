@@ -1,3 +1,5 @@
+let message_timeout;
+
 function save_cache() {
     // TODO: localStorage isn't working properly in web-greeter
     // See: 
@@ -26,6 +28,14 @@ function attempt_login() {
     } else {
         const errormessage  = document.querySelector("#error-message");
         errormessage.textContent = "Incorrect password";
+
+        if (message_timeout) {
+            clearTimeout(message_timeout);
+        }
+        message_timeout = setTimeout(() => {
+            errormessage.textContent = "";
+        }, 2250);
+
         password.value = "";
         start_authentication();
     }
