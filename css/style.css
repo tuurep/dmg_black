@@ -200,12 +200,17 @@ form .select {
     width: 100%;
 }
 
-#error-message:not(:empty) {
-    color: var(--fg-color-error);
-    display: block;
-    margin-bottom: 2em;
+#error-message-area {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    text-align: center;
 }
 
+#error-message:not(:empty) {
+    color: var(--fg-color-error);
+}
 
 #power {
     background-color: var(--accent-color);
