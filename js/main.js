@@ -155,13 +155,18 @@ function set_dropdown_lists() {
     }
 }
 
-/*
-async function wait(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-*/
-
 async function init_greeter() {
+    if (lightdm.can_access_brightness) {   
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "F5") {
+                lightdm.brightness_decrease(5);
+            }
+            if (e.key === "F6") {
+                lightdm.brightness_increase(5);
+            }
+        })
+    }
+
     window.loginbutton = document.querySelector("form button");
 
     set_dropdown_lists();
